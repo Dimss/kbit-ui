@@ -1,4 +1,4 @@
-## UI Service for UAPI backend 
+## UI Service for Kbit backend 
 
 ### Technology stack
 - ReactJS
