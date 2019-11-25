@@ -1,7 +1,8 @@
 ls -all /tmp/src/
 cd  /tmp/src/
-npm i
-npm install -g serve
+tar zxvf node_modules.tar.gz
+#npm i
+#npm install -g serve
 npm run-script build
 ls -all
 #mv /tmp/src/build /opt/app-root/src/
