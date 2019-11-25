@@ -21,7 +21,7 @@ export default class Login extends React.Component {
                         paddingTop: "10%",
                         textAlign: "center"
                     }}>
-                        <span style={{fontSize: "50px", fontWeight: "bold"}}>login</span>
+                        <span style={{fontSize: "50px", fontWeight: "bold", color: "red"}}>login</span>
                         <Input.Group size="large">
                             <Input
                                 style={{"marginTop": "5px"}}
