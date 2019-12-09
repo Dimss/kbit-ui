@@ -1,0 +1,41 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: "kbit-ui-s2i-bc-template"
+objects:
+- kind: ImageStream
+  apiVersion: v1
+  metadata:
+    namespace: ${PROJECT}
+    name: "kbit-ui-is"
+  spec:
+    tags:
+    - name: "latest"
+      from:
+        kind: DockerImage
+        name: "image-registry.openshift-image-registry.svc:5000/kbit/ui:latest"
+- kind: "BuildConfig"
+  apiVersion: "v1"
+  metadata:
+    name: "kbit-ui-s2i-build"
+    namespace: ${PROJECT}
+  spec:
+    runPolicy: "Serial"
+    source:
+      git:
+        uri: "https://github.com/Dimss/kbit-ui"
+    strategy:
+      sourceStrategy:
+        from:
+          kind: "ImageStreamTag"
+          name: "nodejs:latest"
+          namespace: openshift
+    output:
+      to:
+        kind: "ImageStreamTag"
+        name: "kbit-ui-is:latest"
+        namespace: ${PROJECT}
+parameters:
+- description: App project
+  name: PROJECT
+  required: true
